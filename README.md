@@ -48,3 +48,42 @@ Other SV resources may require this resource.
 
 ```cfg
 ensure sv_compat
+```
+
+3. Start the server  
+
+That’s it.
+
+---
+
+## 🧠 How It Works
+
+SV_Compat provides shared exports that other SV resources call for:
+
+- Notifications  
+- Cross-resource communication  
+- Standardized behavior handling  
+- Fallback messaging  
+
+If a more advanced notification system is installed later, SV_Compat can route through it without requiring changes in dependent scripts.
+
+---
+
+## 🔁 Example Usage
+
+Example export call from another resource:
+
+```lua
+exports['sv_compat']:notify(source, "Action completed successfully.", "success")
+```
+
+If no advanced notification system is available, it automatically falls back to chat.
+
+---
+
+## 🛠️ Designed For
+
+- SV ecosystem scripts  
+- Developers who want cleaner resource separation  
+- Servers that value modular architecture  
+- Future scalability  
