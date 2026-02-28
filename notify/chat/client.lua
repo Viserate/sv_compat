@@ -1,0 +1,1 @@
+-- No client logic needed; server sends chat:addMessage directly.

@@ -1,0 +1,1 @@
+-- qs-textui is client-only; this file intentionally left minimal.

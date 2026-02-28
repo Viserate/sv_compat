@@ -1,0 +1,24 @@
+local Config = rawget(_G, 'Config') or {}
+if Config.NotifyBackend ~= 'ox_lib' then return end
+if GetResourceState('ox_lib') ~= 'started' then return end
+
+local Compat = _G.SV_Compat
+if not Compat then return end
+
+Compat.Notify = Compat.Notify or {}
+
+Compat.Notify.Send = function(src, message, ntype, duration, title)
+	if not src or src == 0 then return false end
+	TriggerClientEvent('sv_compat:notify', src, {
+		message = tostring(message or ''),
+		type = ntype or 'inform',
+		duration = duration or (Config.Notify and Config.Notify.duration) or 5000,
+		title = tostring(title or ''),
+		position = (Config.Notify and Config.Notify.position) or 'top-right'
+	})
+	return true
+end
+
+Compat.SendNotify = Compat.Notify.Send
+
+print('[sv_compat] notify backend: ox_lib')
